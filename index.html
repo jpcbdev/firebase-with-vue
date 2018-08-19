@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue y firebase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <label>Your name here</label>
+        <input type="text" v-model="name">
+        <span contenteditable="false">
+
+            <ul>
+                <li v-for="message in chat">
+                    {{ message.name }} said: {{ message.message }}
+                    <input type="button" value="x" v-on:click="deleteMessage(message.id)">
+                </li>
+            </ul>
+
+        </span>
+
+        <label>Your message here</label>
+        <input type="text" v-model="message">
+        <input type="button" value="Send" v-on:click="pushMessage">
+        <br>
+        <input type="button" value="Like!" v-on:click="pushLike">
+        <label> {{ likes }} </label>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+    <script src="main.js"></script>
+</body>
+
+
+</html>
